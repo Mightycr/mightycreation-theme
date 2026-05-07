@@ -44,7 +44,7 @@ get_header(); ?>
                                 ?>
                                 <img src="<?php echo esc_url($image_src); ?>" title="<?php echo esc_attr($image_title); ?>" alt="<?php echo esc_attr($image_alt); ?>" />
                                 <?php if (!$product->is_in_stock()) {
-                                    echo '<span class="article-item-sold">Sold Out</span>';
+                                    echo '<span class="article-item-sold"></span>';
                                 } ?>
                             </div>
                         <?php } else { ?>

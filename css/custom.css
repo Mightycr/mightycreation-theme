@@ -1257,11 +1257,11 @@ hr {
     background-image: url(../images/shape-sold.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 214px 214px;
+    background-size: 107px 107px;
     display: block;
     position: absolute;
-    width: 214px;
-    height: 214px;
+    width: 107px;
+    height: 107px;
     top: 0;
     right: 0;
     z-index: 0;
@@ -1269,9 +1269,9 @@ hr {
 
 @media(max-width:767px) {
     .article-item-sold {
-        background-size: 107px 107px;
-        width: 107px;
-        height: 107px;
+        background-size: 54px 54px;
+        width: 54px;
+        height: 54px;
     }
 }
 
