@@ -48,11 +48,21 @@ get_header(); ?>
     ?>
 
     <?php if (!empty($industry_tags)) : ?>
-    <div class="industry-filters">
-        <button class="industry-filter-btn active" data-filter="all">All</button>
-        <?php foreach ($industry_tags as $tag) : ?>
-            <button class="industry-filter-btn" data-filter="<?php echo esc_attr($tag->slug); ?>"><?php echo esc_html($tag->name); ?></button>
-        <?php endforeach; ?>
+    <div class="product-bar">
+        <div class="industry-filters">
+            <button class="industry-filter-btn active" data-filter="all">All</button>
+            <?php foreach ($industry_tags as $tag) : ?>
+                <button class="industry-filter-btn" data-filter="<?php echo esc_attr($tag->slug); ?>"><?php echo esc_html($tag->name); ?></button>
+            <?php endforeach; ?>
+        </div>
+        <div class="grid-controls">
+            <button class="grid-toggle active" data-cols="3" title="3 columns">
+                <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="3.5" height="3.5"/><rect x="5.25" y="0" width="3.5" height="3.5"/><rect x="10.5" y="0" width="3.5" height="3.5"/><rect x="0" y="5.25" width="3.5" height="3.5"/><rect x="5.25" y="5.25" width="3.5" height="3.5"/><rect x="10.5" y="5.25" width="3.5" height="3.5"/><rect x="0" y="10.5" width="3.5" height="3.5"/><rect x="5.25" y="10.5" width="3.5" height="3.5"/><rect x="10.5" y="10.5" width="3.5" height="3.5"/></svg>
+            </button>
+            <button class="grid-toggle" data-cols="4" title="4 columns">
+                <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="2.5" height="2.5"/><rect x="3.83" y="0" width="2.5" height="2.5"/><rect x="7.66" y="0" width="2.5" height="2.5"/><rect x="11.5" y="0" width="2.5" height="2.5"/><rect x="0" y="3.83" width="2.5" height="2.5"/><rect x="3.83" y="3.83" width="2.5" height="2.5"/><rect x="7.66" y="3.83" width="2.5" height="2.5"/><rect x="11.5" y="3.83" width="2.5" height="2.5"/><rect x="0" y="7.66" width="2.5" height="2.5"/><rect x="3.83" y="7.66" width="2.5" height="2.5"/><rect x="7.66" y="7.66" width="2.5" height="2.5"/><rect x="11.5" y="7.66" width="2.5" height="2.5"/></svg>
+            </button>
+        </div>
     </div>
     <?php endif; ?>
 
