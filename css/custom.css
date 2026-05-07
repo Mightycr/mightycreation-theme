@@ -3278,3 +3278,20 @@ hr {
     line-height: 18px !important;
     -webkit-line-clamp: 1;
 }
+
+/* Related logos carousel: 5px rounded corners */
+.owl-logos .owl-item a {
+    border-radius: 5px;
+}
+.owl-logos .owl-item a img {
+    border-radius: 5px;
+}
+
+/* Single product main image: 5px rounded corners */
+.article-single-images .article-item-image {
+    border-radius: 5px;
+    overflow: hidden;
+}
+.article-single-images .article-item-image img {
+    border-radius: 5px;
+}
