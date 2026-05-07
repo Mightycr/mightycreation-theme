@@ -6,18 +6,28 @@ get_header(); ?>
 
 <main class="main">
 
-    <h1>Tag: <?php single_tag_title(); ?></h1>
+    <div class="product-bar">
+        <p class="tag-label">Tag: <?php single_tag_title(); ?></p>
+        <div class="grid-controls">
+            <button class="grid-toggle active" data-cols="3" title="3 columns">
+                <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="3.5" height="3.5"/><rect x="5.25" y="0" width="3.5" height="3.5"/><rect x="10.5" y="0" width="3.5" height="3.5"/><rect x="0" y="5.25" width="3.5" height="3.5"/><rect x="5.25" y="5.25" width="3.5" height="3.5"/><rect x="10.5" y="5.25" width="3.5" height="3.5"/><rect x="0" y="10.5" width="3.5" height="3.5"/><rect x="5.25" y="10.5" width="3.5" height="3.5"/><rect x="10.5" y="10.5" width="3.5" height="3.5"/></svg>
+            </button>
+            <button class="grid-toggle" data-cols="4" title="4 columns">
+                <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="2.5" height="2.5"/><rect x="3.83" y="0" width="2.5" height="2.5"/><rect x="7.66" y="0" width="2.5" height="2.5"/><rect x="11.5" y="0" width="2.5" height="2.5"/><rect x="0" y="3.83" width="2.5" height="2.5"/><rect x="3.83" y="3.83" width="2.5" height="2.5"/><rect x="7.66" y="3.83" width="2.5" height="2.5"/><rect x="11.5" y="3.83" width="2.5" height="2.5"/><rect x="0" y="7.66" width="2.5" height="2.5"/><rect x="3.83" y="7.66" width="2.5" height="2.5"/><rect x="7.66" y="7.66" width="2.5" height="2.5"/><rect x="11.5" y="7.66" width="2.5" height="2.5"/></svg>
+            </button>
+        </div>
+    </div>
 
     <?php
-    $tag = get_queried_object(); // Get the current tag object
+    $tag = get_queried_object();
 
     $args = array(
         'post_type'      => 'product',
-        'posts_per_page' => -1,  // Get all products
+        'posts_per_page' => -1,
         'post_status'    => 'publish',
         'tax_query'      => array(
             array(
-                'taxonomy' => 'product_tag', // WooCommerce product tag taxonomy
+                'taxonomy' => 'product_tag',
                 'field'    => 'slug',
                 'terms'    => $tag->slug,
             ),
@@ -27,12 +37,11 @@ get_header(); ?>
     $products = new WP_Query($args);
 
     if ($products->have_posts()) : ?>
-        <div class="row">
+        <div class="row" id="product-grid">
             <?php while ($products->have_posts()) : $products->the_post();
                 global $product;
             ?>
-
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 product-item-wrap">
                     <article class="article-item">
                         <?php if (has_post_thumbnail()) { ?>
                             <div class="article-item-image">
@@ -55,8 +64,8 @@ get_header(); ?>
                             <div class="article-item-info-title-desc">
                                 <?php the_excerpt(); ?>
                             </div>
-                            <p class="mb-30"><span class="color-silver">Release date:</span> <?php echo get_the_date('jS F, Y'); ?></p>
-                            <p class="mb-30"><span class="color-silver">Price:</span> <?php echo $product->get_price_html(); ?></p>
+                            <p class="mb-30"><span class="color-silver">Release date:</span><?php echo get_the_date('jS F, Y'); ?></p>
+                            <p class="mb-30"><span class="color-silver">Price:</span><?php echo $product->get_price_html(); ?></p>
                             <a href="<?php the_permalink(); ?>" class="btn btn-primary article-item-info-btn">View Details</a>
                         </div>
                     </article>

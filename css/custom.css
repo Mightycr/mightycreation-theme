@@ -3107,3 +3107,157 @@ hr {
     color: rgba(255, 255, 255, 0.45);
     margin-top: 4px;
 }
+
+
+/*********************** BATCH UPDATE ***********************/
+
+/* All buttons: 5px radius */
+.btn {
+    border-radius: 5px;
+}
+
+/* Order form popup: remove border frame */
+.right-menu-wrapper {
+    border: none;
+}
+
+/* Logo: left-align to match nav items */
+.left-menu .logo {
+    margin: 40px 0 30px;
+}
+.left-menu .logo:after {
+    left: 0;
+    transform: none;
+    width: 30px;
+}
+
+/* Product bar: filters + grid toggle in one row */
+.product-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+}
+.product-bar .industry-filters {
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 8px;
+}
+
+/* Filters: slightly transparent by default */
+.industry-filter-btn {
+    opacity: 0.6;
+}
+.industry-filter-btn.active,
+.industry-filter-btn:hover,
+.industry-filter-btn:focus {
+    opacity: 1;
+}
+
+/* Hide any placeholder/example filter tag */
+.industry-filter-btn[data-filter="example"],
+.industry-filter-btn[data-filter="examples"] {
+    display: none;
+}
+
+/* Grid toggle controls */
+.grid-controls {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+.grid-toggle {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 5px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 200ms ease-in-out;
+}
+.grid-toggle svg {
+    fill: rgba(255, 255, 255, 0.45);
+    transition: fill 200ms ease-in-out;
+}
+.grid-toggle.active,
+.grid-toggle:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+}
+.grid-toggle.active svg,
+.grid-toggle:hover svg {
+    fill: #fff;
+}
+
+/* Tag taxonomy: small label instead of h1 heading */
+.tag-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 16px;
+}
+
+/* Hover info panel: label above value for release date / price */
+.article-item .article-item-info p .color-silver {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+    opacity: 0.6;
+}
+
+/* Hero section */
+.site-hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: -40px -48px 40px;
+    padding: 60px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.site-hero-inner {
+    max-width: 560px;
+}
+.site-hero-title {
+    font-size: 52px !important;
+    line-height: 62px !important;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px !important;
+}
+.site-hero-subtitle {
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 36px;
+}
+@media (max-width: 992px) {
+    .site-hero {
+        margin: -100px -20px 30px;
+        min-height: 420px;
+        padding: 40px 24px;
+    }
+    .site-hero-title {
+        font-size: 36px !important;
+        line-height: 46px !important;
+    }
+}
+@media (max-width: 767px) {
+    .site-hero {
+        margin: -88px -16px 24px;
+        min-height: 360px;
+    }
+}
