@@ -37,9 +37,9 @@
 
         <?php wp_nav_menu( array( 'theme_location' => 'main_menu', 'container'=> false, 'menu_class' =>  'nav')); ?>
 
-        <a class="btn btn-primary jsOrderLogoShow">Order Logo</a>
-
         <?php wp_nav_menu( array( 'theme_location' => 'secondary_menu', 'container'=> false, 'menu_class' =>  'nav-bottom')); ?>
+
+        <a class="btn btn-primary jsOrderLogoShow">Order Logo</a>
 
         <?php wp_nav_menu( array( 'theme_location' => 'social_networks_menu', 'container'=> false, 'menu_class' =>  'social-networks')); ?>
 
