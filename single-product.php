@@ -71,58 +71,11 @@
                         ?>
                  </div>
 
-                 <hr />
-
-                 <!--<p class="color-silver">Additionl design:</p>
-
-                 <label class="checkbox">
-                     <input type="checkbox" />
-                     <span class="checkmark"></span>
-                     <span class="text">Business card design (additional charge)</span>
-                 </label> -->
-
-                 <div class="article-single-info-item">
-                     <?php $price = get_post_meta(get_the_ID(), '_regular_price', true); ?>
-                     <p class="asii-left">Logo price:</p>
-                     <p>$ <?php echo $price ?></p>
-                 </div>
-
-             <!--    <div class="article-single-info-item">
-                     <p class="asii-left">Business card:</p>
-                     <p>$ 500</p>
-                 </div> -->
-
-                 <hr />
-
-                 <div class="article-single-info-item">
-                     <p class="asii-left">TOTAL:</p>
-                     <h1><?php echo $product->get_price_html(); ?> </h1>
-                 </div>
-
-
                  <div class="row mt-40 mb-20">
                      <div class="col-xs-12">
-                         <?php
-                            global $product;
-                            echo apply_filters(
-                                'woocommerce_loop_add_to_cart_link',
-                                sprintf(
-                                    '<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" class="btn btn-default btn-lg %s product_type_%s">%s</a>',
-                                    esc_url($product->add_to_cart_url()),
-                                    esc_attr($product->get_id()),
-                                    esc_attr($product->get_sku()),
-                                    $product->is_purchasable() ? 'add_to_cart_button' : '',
-                                    esc_attr($product->get_type()),
-                                    esc_html($product->add_to_cart_text())
-                                ),
-                                $product
-                            );
-                            ?>
+                         <a class="btn btn-primary jsOrderLogoShow" data-product-name="<?php echo esc_attr(get_the_title()); ?>">Order this logo</a>
                      </div>
                  </div>
-                 <!-- ./row-->
-
-                <a href="/contact" class="link">Ask a question ?</a>
 
              </div>
          </div>
