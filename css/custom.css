@@ -3261,3 +3261,15 @@ hr {
         min-height: 360px;
     }
 }
+
+/* Form popup: white background (higher specificity to override #0e0e0e rule) */
+.right-menu .right-menu-wrapper {
+    background-color: #fff !important;
+}
+
+/* 4-column grid: smaller logo titles */
+#product-grid.grid-4cols .article-item-info-title {
+    font-size: 13px !important;
+    line-height: 18px !important;
+    -webkit-line-clamp: 1;
+}
