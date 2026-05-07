@@ -3137,8 +3137,13 @@ hr {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    padding-top: 12px;
     padding-bottom: 16px;
     margin-bottom: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: #0e0e0e;
 }
 .product-bar .industry-filters {
     padding: 0;
