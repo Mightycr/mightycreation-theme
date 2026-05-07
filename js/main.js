@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
         $("body").toggleClass("no-scroll");
     });
 
-    // Order logo - open right panel
+    // Order logo - open popup modal
     $(".jsOrderLogoShow").click(function () {
         $(".right-menu").addClass("right-menu-show");
         $("body").addClass("no-scroll");
@@ -15,9 +15,18 @@ jQuery(document).ready(function ($) {
         $(".jsNavMobile").removeClass("nav-mobile-close");
     });
 
+    // Close modal via X button
     $(".jsRightMenuCLose").click(function () {
         $(".right-menu").removeClass("right-menu-show");
         $("body").removeClass("no-scroll");
+    });
+
+    // Close modal by clicking the black overlay (outside the content box)
+    $(".right-menu").on("click", function (e) {
+        if (!$(e.target).closest(".right-menu-wrapper").length) {
+            $(this).removeClass("right-menu-show");
+            $("body").removeClass("no-scroll");
+        }
     });
 
 });
