@@ -2619,10 +2619,10 @@ textarea.form-control {
 /*********************** DESIGN ENHANCEMENTS ***********************/
 
 :root {
-    --accent: #c9a96e;
-    --accent-rgb: 201, 169, 110;
-    --accent-light: rgba(201, 169, 110, 0.12);
-    --accent-hover: #e0c080;
+    --accent: #fff;
+    --accent-rgb: 255, 255, 255;
+    --accent-light: rgba(255, 255, 255, 0.1);
+    --accent-hover: #e0e0e0;
 }
 
 /* Typography refinements */
@@ -2666,7 +2666,7 @@ h2 {
     transform: translateX(-50%);
     width: 40px;
     height: 1px;
-    background-color: rgba(201, 169, 110, 0.4);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Nav active and hover accent */
@@ -2751,7 +2751,7 @@ h2 {
 }
 
 .article-item .article-item-info .article-item-info-btn {
-    border-color: rgba(201, 169, 110, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
     color: var(--accent) !important;
 }
 
@@ -2780,7 +2780,7 @@ h2 {
 
 /* Scrollbar accent */
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(201, 169, 110, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -2789,7 +2789,7 @@ h2 {
 
 /* HR accent */
 hr {
-    border-top: 1px solid rgba(201, 169, 110, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Link underline accent */
@@ -2846,7 +2846,7 @@ hr {
 }
 .article-item:hover,
 .article-item:focus-within {
-    border-color: rgba(201, 169, 110, 0.22);
+    border-color: rgba(255, 255, 255, 0.18);
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
 }
 
@@ -2883,7 +2883,7 @@ hr {
     text-transform: uppercase;
     font-size: 10px;
     letter-spacing: 0.12em;
-    color: rgba(201, 169, 110, 0.65);
+    color: rgba(255, 255, 255, 0.5);
     padding-top: 3px;
 }
 
@@ -2902,7 +2902,7 @@ hr {
     color: var(--accent);
     margin: 0 0 20px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Nav font size refinement */
