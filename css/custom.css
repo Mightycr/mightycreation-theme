@@ -2940,25 +2940,24 @@ hr {
 .right-menu .right-menu-wrapper {
     background-color: #0e0e0e;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 56px 60px 60px;
+    padding: 48px 48px 40px;
     width: 90%;
-    max-width: 520px;
+    max-width: 480px;
     position: relative;
-    max-height: 80vh;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .right-menu .right-menu-close {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 44px;
-    height: 44px;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
 }
 
 @media (max-width: 540px) {
     .right-menu .right-menu-wrapper {
-        padding: 56px 24px 32px;
+        padding: 48px 20px 28px;
         width: 95%;
     }
 }

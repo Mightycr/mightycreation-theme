@@ -8,7 +8,24 @@ jQuery(document).ready(function ($) {
     });
 
     // Order logo - open popup modal
+    var $modalTitle = null;
+    var defaultModalTitle = null;
+
     $(".jsOrderLogoShow").click(function () {
+        // Lazily find the form title heading on first open
+        if (!$modalTitle || !$modalTitle.length) {
+            $modalTitle = $(".right-menu-wrapper").find("h1, h2, h3, h4").first();
+            defaultModalTitle = $modalTitle.text();
+        }
+
+        // Replace title with logo name if button carries one, else restore default
+        var productName = $(this).data("product-name");
+        if (productName) {
+            $modalTitle.text(productName);
+        } else {
+            $modalTitle.text(defaultModalTitle);
+        }
+
         $(".right-menu").addClass("right-menu-show");
         $("body").addClass("no-scroll");
         $(".left-menu").removeClass("left-menu-show");
