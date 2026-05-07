@@ -201,14 +201,27 @@ function custom_remove_all_quantity_fields( $return, $product ) {return true;}
 add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
 
 
-// Remove "All Logos" from main menu and put "Logos for sale" first, "Sold logos" second
+// Main menu: remove "All Logos", append secondary menu items, reorder
 add_filter('wp_nav_menu_objects', function($items, $args) {
     if (!isset($args->theme_location) || $args->theme_location !== 'main_menu') return $items;
 
+    // Remove "All Logos"
     $items = array_filter($items, function($item) {
         return strtolower(trim($item->title)) !== 'all logos';
     });
 
+    // Append About me, Testimonials etc. from secondary_menu
+    $locations = get_nav_menu_locations();
+    if (!empty($locations['secondary_menu'])) {
+        $secondary_items = wp_get_nav_menu_items($locations['secondary_menu']);
+        if ($secondary_items && !is_wp_error($secondary_items)) {
+            foreach ($secondary_items as $sec_item) {
+                $items[] = $sec_item;
+            }
+        }
+    }
+
+    // Order: Logos for sale first, Sold logos second, rest after
     $order = ['logos for sale' => 0, 'sold logos' => 1];
     usort($items, function($a, $b) use ($order) {
         $a_pos = $order[strtolower(trim($a->title))] ?? 99;
