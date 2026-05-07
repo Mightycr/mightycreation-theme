@@ -2961,3 +2961,149 @@ hr {
         width: 95%;
     }
 }
+
+
+/*********************** MULTI-CHANGE UPDATE ***********************/
+
+/* Order form: white background, black text & lines */
+.right-menu-wrapper {
+    background-color: #fff;
+    color: #000;
+}
+.right-menu-wrapper h1,
+.right-menu-wrapper h2,
+.right-menu-wrapper h3,
+.right-menu-wrapper h4,
+.right-menu-wrapper p,
+.right-menu-wrapper a,
+.right-menu-wrapper label,
+.right-menu-wrapper span {
+    color: #000 !important;
+}
+.right-menu-wrapper .form-control,
+.right-menu-wrapper input[type="text"],
+.right-menu-wrapper input[type="email"],
+.right-menu-wrapper input[type="tel"],
+.right-menu-wrapper textarea {
+    border-bottom: 2px solid #000 !important;
+    color: #000 !important;
+    background-color: transparent !important;
+}
+.right-menu-wrapper ::-webkit-input-placeholder { color: rgba(0,0,0,0.45) !important; }
+.right-menu-wrapper ::-moz-placeholder           { color: rgba(0,0,0,0.45) !important; }
+.right-menu-wrapper :-ms-input-placeholder       { color: rgba(0,0,0,0.45) !important; }
+.right-menu-wrapper .btn,
+.right-menu-wrapper input[type="submit"],
+.right-menu-wrapper button[type="submit"] {
+    background-color: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important;
+}
+.right-menu-wrapper .btn:hover,
+.right-menu-wrapper input[type="submit"]:hover {
+    background-color: #333 !important;
+    border-color: #333 !important;
+}
+/* Close X black on white modal */
+.right-menu .right-menu-close::after,
+.right-menu .right-menu-close::before {
+    background-color: #000;
+}
+
+/* Filters: 5px border-radius */
+.industry-filter-btn {
+    border-radius: 5px;
+}
+
+/* Product cards: 5px border-radius */
+.article-item {
+    border-radius: 5px;
+}
+.article-item .article-item-image {
+    border-radius: 5px;
+}
+
+/* Hover: do NOT darken the logo image */
+.article-item:hover .article-item-image img,
+.article-item:focus .article-item-image img {
+    opacity: 1 !important;
+}
+
+/* Hover: center info panel content vertically */
+.article-item .article-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.article-item .article-item-info .article-item-info-btn {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    align-self: flex-start;
+    margin-top: 14px;
+}
+/* Responsive: mobile info already in-flow */
+@media (max-width: 767px) {
+    .article-item .article-item-info .article-item-info-btn {
+        margin-top: 10px;
+    }
+}
+
+/* Order Logo button: above social icons (absolute, bottom of sidebar) */
+.left-menu .jsOrderLogoShow {
+    position: absolute;
+    bottom: 74px;
+    left: 30px;
+    right: 30px;
+    width: auto;
+    margin-bottom: 0;
+}
+@media (max-width: 992px) {
+    .left-menu .jsOrderLogoShow {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Social icons: centered */
+.left-menu .social-networks {
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Testimonials page */
+.testimonials-list {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.testimonial-item {
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 24px 32px;
+    margin-bottom: 40px;
+}
+.testimonial-quote {
+    font-size: 16px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+.testimonial-author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.testimonial-author-role {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 4px;
+}

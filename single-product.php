@@ -108,18 +108,11 @@
                 'no_found_rows' => true, // We don't ned pagination so this speeds up the query
                 'orderby' => 'rand',
                 'tax_query' => [
-                    'relation' => 'OR',
-                    [
-                        'taxonomy' => 'product_cat',
-                        'field' => 'term_id',
-                        'operator' => 'IN',
-                        'terms' => $cats_ids,
-                    ],
                     [
                         'taxonomy' => 'product_tag',
-                        'field' => 'term_id',
+                        'field'    => 'term_id',
                         'operator' => 'IN',
-                        'terms' => $tag_ids,
+                        'terms'    => $tag_ids,
                     ],
                 ]
             );
