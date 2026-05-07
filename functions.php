@@ -201,5 +201,32 @@ function custom_remove_all_quantity_fields( $return, $product ) {return true;}
 add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
 
 
+// Remove "All Logos" from main menu and put "Logos for sale" first, "Sold logos" second
+add_filter('wp_nav_menu_objects', function($items, $args) {
+    if (!isset($args->theme_location) || $args->theme_location !== 'main_menu') return $items;
+
+    $items = array_filter($items, function($item) {
+        return strtolower(trim($item->title)) !== 'all logos';
+    });
+
+    $order = ['logos for sale' => 0, 'sold logos' => 1];
+    usort($items, function($a, $b) use ($order) {
+        $a_pos = $order[strtolower(trim($a->title))] ?? 99;
+        $b_pos = $order[strtolower(trim($b->title))] ?? 99;
+        return $a_pos - $b_pos;
+    });
+
+    return $items;
+}, 10, 2);
+
+// Mark "Logos for sale" as active when on the home page
+add_filter('nav_menu_css_class', function($classes, $item, $args) {
+    if (!isset($args->theme_location) || $args->theme_location !== 'main_menu') return $classes;
+    if (is_front_page() && strtolower(trim($item->title)) === 'logos for sale') {
+        $classes[] = 'current-menu-item';
+    }
+    return $classes;
+}, 10, 3);
+
 
 ?>
