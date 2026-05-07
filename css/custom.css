@@ -2757,3 +2757,221 @@ hr {
         background: #090909;
     }
 }
+
+
+/*********************** PHASE 2: PORTFOLIO ENHANCEMENTS ***********************/
+
+/* ----- Loading page: scale-pulse animation ----- */
+.loading-page .logo {
+    animation: loadingPulse 2s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+    0%   { opacity: 0.4; transform: scale(0.92); }
+    50%  { opacity: 1;   transform: scale(1.05); }
+    100% { opacity: 0.4; transform: scale(0.92); }
+}
+
+
+/* ----- Article item: stagger entrance animation ----- */
+.article-item {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.article-item.article-item-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .article-item {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* ----- Single product: info rows as a data table ----- */
+.article-single-info .article-single-info-item {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.article-single-info .article-single-info-item:last-child {
+    border-bottom: none;
+}
+
+.article-single-info .article-single-info-item .asii-left {
+    min-width: 130px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    padding-top: 5px;
+    flex-shrink: 0;
+    margin-right: 0;
+}
+
+/* TOTAL row (follows the second <hr>) */
+hr + .article-single-info-item {
+    border-bottom: none;
+    padding-top: 20px;
+}
+
+.article-single-info .article-single-info-item h1 {
+    color: var(--accent);
+    font-size: 30px;
+    line-height: 38px;
+}
+
+
+/* ----- Single product: industry tag pills ----- */
+.article-single-info-item ul > li > a {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 3px 10px;
+    border-radius: 2px;
+    display: inline-block;
+    line-height: 20px;
+    -webkit-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+}
+
+.article-single-info-item ul > li > a:after {
+    content: none;
+}
+
+.article-single-info-item ul > li > a:hover,
+.article-single-info-item ul > li > a:focus {
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+}
+
+
+/* ----- Single product: add to cart CTA ----- */
+.article-single-info .btn.btn-default {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 12px 44px;
+    font-size: 13px;
+}
+
+.article-single-info .btn.btn-default:hover,
+.article-single-info .btn.btn-default:focus {
+    background-color: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+
+/* ----- Single product: ask a question link ----- */
+.article-single-info .link {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+}
+
+
+/* ----- Single product: related section label ----- */
+.main > p.color-silver {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.5;
+}
+
+
+/* ----- Single product: prev / next navigation ----- */
+.article-single-nav .article-single-nav-previous,
+.article-single-nav .article-single-nav-next {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.article-single-nav .article-single-nav-previous:hover,
+.article-single-nav .article-single-nav-next:hover,
+.article-single-nav .article-single-nav-previous:focus,
+.article-single-nav .article-single-nav-next:focus {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+
+/* ----- About page: body text & author box ----- */
+.main .about-box > p:first-of-type {
+    font-size: 17px;
+    line-height: 36px;
+}
+
+.main .about-box .about-box-author {
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+    padding-top: 32px;
+}
+
+.main .about-box .about-box-author .about-box-author-photo img {
+    border: 2px solid rgba(201, 169, 110, 0.3);
+    padding: 2px;
+}
+
+.main .about-box .about-box-author .about-box-author-author-info h4 {
+    color: var(--accent);
+}
+
+
+/* ----- Contact page: title with accent underline ----- */
+.main .contact-box h1 {
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    margin-bottom: 44px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.main .contact-box h1:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 36px;
+    height: 1px;
+    background-color: var(--accent);
+}
+
+
+/* ----- 404 page: oversized outlined number ----- */
+body.error404 .main h1 {
+    font-size: clamp(100px, 18vw, 200px);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201, 169, 110, 0.35);
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+}
+
+body.error404 .main h2 {
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 40px;
+}
+
+
+/* ----- Right menu: subtle border ----- */
+.right-menu {
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
