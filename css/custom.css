@@ -2795,3 +2795,103 @@ hr {
         background: #090909;
     }
 }
+
+
+/*********************** UI IMPROVEMENTS ***********************/
+
+/* Main content: generous padding */
+.main {
+    padding: 40px 48px 60px;
+}
+@media (max-width: 992px) {
+    .main {
+        padding-top: 100px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media (max-width: 767px) {
+    .main {
+        padding: 88px 16px 40px;
+    }
+}
+
+/* Product image: consistent 4:3 ratio */
+.article-item .article-item-image {
+    aspect-ratio: 4 / 3;
+}
+.article-item .article-item-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Product card: subtle border + hover glow */
+.article-item {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.article-item:hover,
+.article-item:focus-within {
+    border-color: rgba(201, 169, 110, 0.22);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Loading animation: smooth pulse instead of awkward rotate */
+@-webkit-keyframes loadingLogoAnim {
+    0%   { opacity: 1;    -webkit-transform: scale(1); }
+    50%  { opacity: 0.25; -webkit-transform: scale(0.9); }
+    100% { opacity: 1;    -webkit-transform: scale(1); }
+}
+@-moz-keyframes loadingLogoAnim {
+    0%   { opacity: 1;    -moz-transform: scale(1); }
+    50%  { opacity: 0.25; -moz-transform: scale(0.9); }
+    100% { opacity: 1;    -moz-transform: scale(1); }
+}
+@keyframes loadingLogoAnim {
+    0%   { opacity: 1;    transform: scale(1); }
+    50%  { opacity: 0.25; transform: scale(0.9); }
+    100% { opacity: 1;    transform: scale(1); }
+}
+
+/* Single product info: structured label/value rows */
+.article-single-info .article-single-info-item {
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 0;
+}
+.article-single-info .article-single-info-item + hr {
+    display: none;
+}
+.article-single-info .article-single-info-item .asii-left {
+    min-width: 130px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(201, 169, 110, 0.65);
+    padding-top: 3px;
+}
+
+/* Single product: price highlight */
+.article-single-info .article-single-info-item h1 {
+    color: var(--accent);
+    font-size: 28px;
+    line-height: 36px;
+}
+
+/* Related logos heading */
+.related-heading {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+/* Nav font size refinement */
+.left-menu .nav > li > a {
+    font-size: 15px;
+    letter-spacing: 0.05em;
+}
