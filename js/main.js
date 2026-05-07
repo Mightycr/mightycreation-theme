@@ -70,10 +70,13 @@ jQuery(document).ready(function ($) {
         $(".grid-toggle").removeClass("active");
         $(this).addClass("active");
         var $items = $(".product-item-wrap");
+        var $grid  = $("#product-grid");
         if (cols === 4) {
             $items.removeClass("col-lg-4").addClass("col-lg-3");
+            $grid.addClass("grid-4cols");
         } else {
             $items.removeClass("col-lg-3").addClass("col-lg-4");
+            $grid.removeClass("grid-4cols");
         }
     });
 
