@@ -2797,219 +2797,101 @@ hr {
 }
 
 
-/*********************** PHASE 2: PORTFOLIO ENHANCEMENTS ***********************/
+/*********************** UI IMPROVEMENTS ***********************/
 
-/* ----- Loading page: scale-pulse animation ----- */
-.loading-page .logo {
-    animation: loadingPulse 2s ease-in-out infinite;
+/* Main content: generous padding */
+.main {
+    padding: 40px 48px 60px;
 }
-
-@keyframes loadingPulse {
-    0%   { opacity: 0.4; transform: scale(0.92); }
-    50%  { opacity: 1;   transform: scale(1.05); }
-    100% { opacity: 0.4; transform: scale(0.92); }
+@media (max-width: 992px) {
+    .main {
+        padding-top: 100px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
-
-
-/* ----- Article item: stagger entrance animation ----- */
-.article-item {
-    opacity: 0;
-    transform: translateY(18px);
-}
-
-.article-item.article-item-visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 500ms ease-out, transform 500ms ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .article-item {
-        opacity: 1;
-        transform: none;
+@media (max-width: 767px) {
+    .main {
+        padding: 88px 16px 40px;
     }
 }
 
+/* Product image: consistent 4:3 ratio */
+.article-item .article-item-image {
+    aspect-ratio: 4 / 3;
+}
+.article-item .article-item-image img {
+    height: 100%;
+    object-fit: cover;
+}
 
-/* ----- Single product: info rows as a data table ----- */
+/* Product card: subtle border + hover glow */
+.article-item {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.article-item:hover,
+.article-item:focus-within {
+    border-color: rgba(201, 169, 110, 0.22);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Loading animation: smooth pulse instead of awkward rotate */
+@-webkit-keyframes loadingLogoAnim {
+    0%   { opacity: 1;    -webkit-transform: scale(1); }
+    50%  { opacity: 0.25; -webkit-transform: scale(0.9); }
+    100% { opacity: 1;    -webkit-transform: scale(1); }
+}
+@-moz-keyframes loadingLogoAnim {
+    0%   { opacity: 1;    -moz-transform: scale(1); }
+    50%  { opacity: 0.25; -moz-transform: scale(0.9); }
+    100% { opacity: 1;    -moz-transform: scale(1); }
+}
+@keyframes loadingLogoAnim {
+    0%   { opacity: 1;    transform: scale(1); }
+    50%  { opacity: 0.25; transform: scale(0.9); }
+    100% { opacity: 1;    transform: scale(1); }
+}
+
+/* Single product info: structured label/value rows */
 .article-single-info .article-single-info-item {
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    gap: 20px;
     align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 0;
 }
-
-.article-single-info .article-single-info-item:last-child {
-    border-bottom: none;
+.article-single-info .article-single-info-item + hr {
+    display: none;
 }
-
 .article-single-info .article-single-info-item .asii-left {
     min-width: 130px;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.3);
-    padding-top: 5px;
     flex-shrink: 0;
-    margin-right: 0;
-}
-
-/* TOTAL row (follows the second <hr>) */
-hr + .article-single-info-item {
-    border-bottom: none;
-    padding-top: 20px;
-}
-
-.article-single-info .article-single-info-item h1 {
-    color: var(--accent);
-    font-size: 30px;
-    line-height: 38px;
-}
-
-
-/* ----- Single product: industry tag pills ----- */
-.article-single-info-item ul > li > a {
-    font-size: 10px;
-    letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 3px 10px;
-    border-radius: 2px;
-    display: inline-block;
-    line-height: 20px;
-    -webkit-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;
-}
-
-.article-single-info-item ul > li > a:after {
-    content: none;
-}
-
-.article-single-info-item ul > li > a:hover,
-.article-single-info-item ul > li > a:focus {
-    border-color: var(--accent);
-    color: var(--accent);
-    text-decoration: none;
-}
-
-
-/* ----- Single product: add to cart CTA ----- */
-.article-single-info .btn.btn-default {
-    background-color: var(--accent);
-    border-color: var(--accent);
-    color: #000;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    padding: 12px 44px;
-    font-size: 13px;
-}
-
-.article-single-info .btn.btn-default:hover,
-.article-single-info .btn.btn-default:focus {
-    background-color: transparent;
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
-
-/* ----- Single product: ask a question link ----- */
-.article-single-info .link {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-}
-
-
-/* ----- Single product: related section label ----- */
-.main > p.color-silver {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    display: block;
-    opacity: 0.5;
-}
-
-
-/* ----- Single product: prev / next navigation ----- */
-.article-single-nav .article-single-nav-previous,
-.article-single-nav .article-single-nav-next {
     font-size: 10px;
     letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(201, 169, 110, 0.65);
+    padding-top: 3px;
 }
 
-.article-single-nav .article-single-nav-previous:hover,
-.article-single-nav .article-single-nav-next:hover,
-.article-single-nav .article-single-nav-previous:focus,
-.article-single-nav .article-single-nav-next:focus {
+/* Single product: price highlight */
+.article-single-info .article-single-info-item h1 {
     color: var(--accent);
-    text-decoration: none;
-}
-
-
-/* ----- About page: body text & author box ----- */
-.main .about-box > p:first-of-type {
-    font-size: 17px;
+    font-size: 28px;
     line-height: 36px;
 }
 
-.main .about-box .about-box-author {
-    border-top: 1px solid rgba(201, 169, 110, 0.15);
-    padding-top: 32px;
-}
-
-.main .about-box .about-box-author .about-box-author-photo img {
-    border: 2px solid rgba(201, 169, 110, 0.3);
-    padding: 2px;
-}
-
-.main .about-box .about-box-author .about-box-author-author-info h4 {
+/* Related logos heading */
+.related-heading {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--accent);
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
 }
 
-
-/* ----- Contact page: title with accent underline ----- */
-.main .contact-box h1 {
-    font-size: 28px;
-    letter-spacing: 0.05em;
-    margin-bottom: 44px;
-    position: relative;
-    padding-bottom: 20px;
-}
-
-.main .contact-box h1:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 36px;
-    height: 1px;
-    background-color: var(--accent);
-}
-
-
-/* ----- 404 page: oversized outlined number ----- */
-body.error404 .main h1 {
-    font-size: clamp(100px, 18vw, 200px);
-    line-height: 1;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(201, 169, 110, 0.35);
-    letter-spacing: 0.08em;
-    margin-bottom: 24px;
-}
-
-body.error404 .main h2 {
+/* Nav font size refinement */
+.left-menu .nav > li > a {
     font-size: 15px;
-    letter-spacing: 0.06em;
-    color: rgba(255, 255, 255, 0.55);
-    margin-bottom: 40px;
-}
-
-
-/* ----- Right menu: subtle border ----- */
-.right-menu {
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    letter-spacing: 0.05em;
 }

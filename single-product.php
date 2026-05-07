@@ -131,7 +131,7 @@
      <!-- ./row-->
 
 
-     <p class="color-silver">Some Industry</p>
+     <p class="related-heading">Related Logos</p>
 
      <div id="owl-logos" class="owl-carousel owl-logos">
          <?php
