@@ -1254,24 +1254,39 @@ hr {
 
 
 .article-item-sold {
-    background-image: url(../images/shape-sold.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 107px 107px;
-    display: block;
+    background-image: none;
+    background: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    width: 107px;
-    height: 107px;
-    top: 0;
-    right: 0;
-    z-index: 0;
+    width: 48px;
+    height: 48px;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.article-item-sold::after {
+    content: "SOLD";
+    font-family: 'Sofia Pro Light', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    text-align: center;
 }
 
 @media(max-width:767px) {
     .article-item-sold {
-        background-size: 54px 54px;
-        width: 54px;
-        height: 54px;
+        width: 38px;
+        height: 38px;
+        top: 8px;
+        right: 8px;
+    }
+    .article-item-sold::after {
+        font-size: 8px;
     }
 }
 
