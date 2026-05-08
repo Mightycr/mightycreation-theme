@@ -1114,7 +1114,7 @@ hr {
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: #080808;
+    background-color: rgba(8, 8, 8, 0.78);
     padding: 20px 25px;
 
     -webkit-transition: all 300ms ease-in-out;
@@ -2742,7 +2742,7 @@ h2 {
 /* Article item: accent title, left border, refined CTA */
 .article-item .article-item-info {
     border-left: 2px solid var(--accent);
-    background-color: #070707;
+    background-color: rgba(7, 7, 7, 0.78);
 }
 
 .article-item .article-item-info .article-item-info-title {
@@ -3294,4 +3294,29 @@ hr {
 }
 .article-single-images .article-item-image img {
     border-radius: 5px;
+}
+
+/* Single product: push content down 100px, keep right panel sticky */
+.single-product .main {
+    padding-top: 120px;
+}
+.single-product .row.mb-50 {
+    align-items: flex-start;
+}
+.single-product .article-single-info {
+    position: sticky;
+    top: 20px;
+}
+
+/* Filter buttons: transparent active state (border highlight only) */
+.industry-filter-btn.active {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+    opacity: 1;
+}
+
+/* Logo hover info panel: semi-transparent background */
+.article-item .article-item-info {
+    background-color: rgba(7, 7, 7, 0.78) !important;
 }
