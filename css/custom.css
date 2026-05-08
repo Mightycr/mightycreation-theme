@@ -3040,7 +3040,7 @@ hr {
     position: relative;
     left: auto;
     bottom: auto;
-    align-self: flex-start;
+    align-self: center;
     margin-top: 14px;
 }
 /* Responsive: mobile info already in-flow */
@@ -3346,6 +3346,11 @@ hr {
 /* Show date and description — unhide mb-30 paragraphs */
 .article-item .article-item-info p.mb-30 {
     display: block !important;
+}
+/* Center the View Details button in the overlay */
+.article-item .article-item-info .article-item-info-btn {
+    align-self: center !important;
+    text-align: center !important;
 }
 
 /* ===== LEFT MENU: transparent background ===== */
