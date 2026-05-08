@@ -28,7 +28,19 @@ Template Name: Home
         }
     };
     add_action( 'pre_get_posts', $show_all_stock, 9999 );
-    $params = array('posts_per_page' => -1, 'post_type' => 'product', 'post_status' => 'publish');
+    $params = array(
+        'posts_per_page' => -1,
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
+        'tax_query'      => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug',
+                'terms'    => 'sold-logos',
+                'operator' => 'NOT IN',
+            ),
+        ),
+    );
     $wc_query = new WP_Query($params);
     remove_action( 'pre_get_posts', $show_all_stock, 9999 );
 
