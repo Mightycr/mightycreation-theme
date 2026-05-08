@@ -3384,7 +3384,8 @@ hr {
     }
 }
 
-/* ===== PRODUCT BAR: no background ===== */
+/* ===== PRODUCT BAR: solid background so logos scroll under it ===== */
 .product-bar {
-    background-color: transparent !important;
+    background-color: #0e0e0e !important;
+    z-index: 20 !important;
 }
