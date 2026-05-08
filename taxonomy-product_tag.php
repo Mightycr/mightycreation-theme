@@ -65,7 +65,7 @@ get_header(); ?>
                                 <?php the_excerpt(); ?>
                             </div>
                             <p class="mb-30"><span class="color-silver">Release date:</span><?php echo get_the_date('jS F, Y'); ?></p>
-                            <p class="mb-30"><span class="color-silver">Price:</span><?php echo $product->get_price_html(); ?></p>
+                            <p class="mb-30 article-item-price"><span class="color-silver">Price:</span><?php echo $product->get_price_html(); ?></p>
                             <a href="<?php the_permalink(); ?>" class="btn btn-primary article-item-info-btn">View Details</a>
                         </div>
                     </article>
