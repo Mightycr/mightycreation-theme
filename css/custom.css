@@ -3296,32 +3296,29 @@ hr {
     border-radius: 5px;
 }
 
-/* Single product: two-panel layout — left scrolls, right is static */
+/* Single product: normal page scroll — no fixed panels */
 .single-product .main {
-    padding: 0 !important;
-    overflow: hidden !important;
-    display: flex !important;
-    flex-direction: column !important;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: block;
 }
 .single-product .main > .row.mb-50 {
-    flex: 1 !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    display: flex !important;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: visible;
+    margin: 0 -15px;
 }
 .single-product .col-xs-12.col-sm-6.col-md-6.col-lg-7 {
-    overflow-y: auto !important;
-    height: 100% !important;
-    padding: 100px 30px 40px 40px !important;
-    box-sizing: border-box !important;
+    overflow: visible;
+    height: auto;
+    padding: 100px 15px 20px;
 }
 .single-product .col-xs-12.col-sm-6.col-md-6.col-lg-5 {
-    overflow: hidden !important;
-    height: 100% !important;
-    padding: 100px 40px 40px 30px !important;
-    box-sizing: border-box !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.07) !important;
+    overflow: visible;
+    height: auto;
+    padding: 100px 15px 20px;
+    border-left: none;
 }
 
 /* Filter buttons: transparent active state (border highlight only) */

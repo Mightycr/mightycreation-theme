@@ -101,7 +101,7 @@
             }
 
             $args = array(
-                'posts_per_page' => 10,
+                'posts_per_page' => 6,
                 // How many items to display
                 'post__not_in' => array(get_the_ID()),
                 // Exclude current post
