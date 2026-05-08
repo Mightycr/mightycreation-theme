@@ -9,10 +9,10 @@ get_header(); ?>
     <div class="product-bar">
         <p class="tag-label">Tag: <?php single_tag_title(); ?></p>
         <div class="grid-controls">
-            <button class="grid-toggle active" data-cols="3" title="3 columns">
+            <button class="grid-toggle" data-cols="3" title="3 columns">
                 <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="3.5" height="3.5"/><rect x="5.25" y="0" width="3.5" height="3.5"/><rect x="10.5" y="0" width="3.5" height="3.5"/><rect x="0" y="5.25" width="3.5" height="3.5"/><rect x="5.25" y="5.25" width="3.5" height="3.5"/><rect x="10.5" y="5.25" width="3.5" height="3.5"/><rect x="0" y="10.5" width="3.5" height="3.5"/><rect x="5.25" y="10.5" width="3.5" height="3.5"/><rect x="10.5" y="10.5" width="3.5" height="3.5"/></svg>
             </button>
-            <button class="grid-toggle" data-cols="4" title="4 columns">
+            <button class="grid-toggle active" data-cols="4" title="4 columns">
                 <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="2.5" height="2.5"/><rect x="3.83" y="0" width="2.5" height="2.5"/><rect x="7.66" y="0" width="2.5" height="2.5"/><rect x="11.5" y="0" width="2.5" height="2.5"/><rect x="0" y="3.83" width="2.5" height="2.5"/><rect x="3.83" y="3.83" width="2.5" height="2.5"/><rect x="7.66" y="3.83" width="2.5" height="2.5"/><rect x="11.5" y="3.83" width="2.5" height="2.5"/><rect x="0" y="7.66" width="2.5" height="2.5"/><rect x="3.83" y="7.66" width="2.5" height="2.5"/><rect x="7.66" y="7.66" width="2.5" height="2.5"/><rect x="11.5" y="7.66" width="2.5" height="2.5"/></svg>
             </button>
         </div>
@@ -51,11 +51,11 @@ get_header(); ?>
     remove_action( 'pre_get_posts', $show_all_stock, 9999 );
 
     if ($products->have_posts()) : ?>
-        <div class="row" id="product-grid">
+        <div class="row grid-4cols" id="product-grid">
             <?php while ($products->have_posts()) : $products->the_post();
                 global $product;
             ?>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 product-item-wrap">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 product-item-wrap">
                     <article class="article-item">
                         <?php if (has_post_thumbnail()) { ?>
                             <div class="article-item-image">
