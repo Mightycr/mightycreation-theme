@@ -21,6 +21,19 @@ get_header(); ?>
     <?php
     $tag = get_queried_object();
 
+    $show_all_stock = function( $query ) {
+        $mq = $query->get( 'meta_query' );
+        if ( is_array( $mq ) ) {
+            foreach ( $mq as $k => $clause ) {
+                if ( isset( $clause['key'] ) && $clause['key'] === '_stock_status' ) {
+                    unset( $mq[ $k ] );
+                }
+            }
+            $query->set( 'meta_query', array_values( $mq ) );
+        }
+    };
+    add_action( 'pre_get_posts', $show_all_stock, 9999 );
+
     $args = array(
         'post_type'      => 'product',
         'posts_per_page' => -1,
@@ -35,6 +48,7 @@ get_header(); ?>
     );
 
     $products = new WP_Query($args);
+    remove_action( 'pre_get_posts', $show_all_stock, 9999 );
 
     if ($products->have_posts()) : ?>
         <div class="row" id="product-grid">

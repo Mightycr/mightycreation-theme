@@ -15,8 +15,22 @@ Template Name: Home
     </div>
 
     <?php
-    $params = array('posts_per_page' => -1, 'post_type' => 'product');
+    // Include out-of-stock products — bypass WooCommerce's "hide out of stock" catalog filter
+    $show_all_stock = function( $query ) {
+        $mq = $query->get( 'meta_query' );
+        if ( is_array( $mq ) ) {
+            foreach ( $mq as $k => $clause ) {
+                if ( isset( $clause['key'] ) && $clause['key'] === '_stock_status' ) {
+                    unset( $mq[ $k ] );
+                }
+            }
+            $query->set( 'meta_query', array_values( $mq ) );
+        }
+    };
+    add_action( 'pre_get_posts', $show_all_stock, 9999 );
+    $params = array('posts_per_page' => -1, 'post_type' => 'product', 'post_status' => 'publish');
     $wc_query = new WP_Query($params);
+    remove_action( 'pre_get_posts', $show_all_stock, 9999 );
 
     $product_ids = array();
     if ($wc_query->have_posts()) {
