@@ -15,8 +15,34 @@ Template Name: Home
     </div>
 
     <?php
-    $params = array('posts_per_page' => -1, 'post_type' => 'product');
+    // Include out-of-stock products — bypass WooCommerce's "hide out of stock" catalog filter
+    $show_all_stock = function( $query ) {
+        $mq = $query->get( 'meta_query' );
+        if ( is_array( $mq ) ) {
+            foreach ( $mq as $k => $clause ) {
+                if ( isset( $clause['key'] ) && $clause['key'] === '_stock_status' ) {
+                    unset( $mq[ $k ] );
+                }
+            }
+            $query->set( 'meta_query', array_values( $mq ) );
+        }
+    };
+    add_action( 'pre_get_posts', $show_all_stock, 9999 );
+    $params = array(
+        'posts_per_page' => -1,
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
+        'tax_query'      => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'slug',
+                'terms'    => 'sold-logos',
+                'operator' => 'NOT IN',
+            ),
+        ),
+    );
     $wc_query = new WP_Query($params);
+    remove_action( 'pre_get_posts', $show_all_stock, 9999 );
 
     $product_ids = array();
     if ($wc_query->have_posts()) {
@@ -33,9 +59,7 @@ Template Name: Home
         $tags = wp_get_object_terms($product_ids, 'product_tag', array('fields' => 'all'));
         if (!is_wp_error($tags)) {
             foreach ($tags as $tag) {
-                if (!empty($tag->description)) {
-                    $industry_tags[$tag->term_id] = $tag;
-                }
+                $industry_tags[$tag->term_id] = $tag;
             }
         }
     }
@@ -53,23 +77,23 @@ Template Name: Home
         <div></div>
         <?php endif; ?>
         <div class="grid-controls">
-            <button class="grid-toggle active" data-cols="3" title="3 columns">
+            <button class="grid-toggle" data-cols="3" title="3 columns">
                 <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="3.5" height="3.5"/><rect x="5.25" y="0" width="3.5" height="3.5"/><rect x="10.5" y="0" width="3.5" height="3.5"/><rect x="0" y="5.25" width="3.5" height="3.5"/><rect x="5.25" y="5.25" width="3.5" height="3.5"/><rect x="10.5" y="5.25" width="3.5" height="3.5"/><rect x="0" y="10.5" width="3.5" height="3.5"/><rect x="5.25" y="10.5" width="3.5" height="3.5"/><rect x="10.5" y="10.5" width="3.5" height="3.5"/></svg>
             </button>
-            <button class="grid-toggle" data-cols="4" title="4 columns">
+            <button class="grid-toggle active" data-cols="4" title="4 columns">
                 <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="2.5" height="2.5"/><rect x="3.83" y="0" width="2.5" height="2.5"/><rect x="7.66" y="0" width="2.5" height="2.5"/><rect x="11.5" y="0" width="2.5" height="2.5"/><rect x="0" y="3.83" width="2.5" height="2.5"/><rect x="3.83" y="3.83" width="2.5" height="2.5"/><rect x="7.66" y="3.83" width="2.5" height="2.5"/><rect x="11.5" y="3.83" width="2.5" height="2.5"/><rect x="0" y="7.66" width="2.5" height="2.5"/><rect x="3.83" y="7.66" width="2.5" height="2.5"/><rect x="7.66" y="7.66" width="2.5" height="2.5"/><rect x="11.5" y="7.66" width="2.5" height="2.5"/></svg>
             </button>
         </div>
     </div>
 
     <?php if ($wc_query->have_posts()) : ?>
-        <div class="row" id="product-grid">
+        <div class="row grid-4cols" id="product-grid">
             <?php while ($wc_query->have_posts()) :
                 $wc_query->the_post();
                 $post_tags = wp_get_post_terms(get_the_ID(), 'product_tag', array('fields' => 'slugs'));
                 $tag_slugs = (!empty($post_tags) && !is_wp_error($post_tags)) ? implode(' ', $post_tags) : '';
             ?>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 product-item-wrap" data-tags="<?php echo esc_attr($tag_slugs); ?>">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 product-item-wrap" data-tags="<?php echo esc_attr($tag_slugs); ?>">
                     <article class="article-item">
                         <?php if (has_post_thumbnail()) { ?>
                             <div class="article-item-image">
