@@ -1,4 +1,4 @@
-/*********************** GLOBAL ***********************/
+﻿/*********************** GLOBAL ***********************/
 
 body {
     font-family: 'Sofia Pro Light', sans-serif;
@@ -2739,9 +2739,8 @@ h2 {
     color: #000;
 }
 
-/* Article item: accent title, left border, refined CTA */
+/* Article item: accent title, refined CTA */
 .article-item .article-item-info {
-    border-left: 2px solid var(--accent);
     background-color: rgba(7, 7, 7, 0.78);
 }
 
@@ -3039,7 +3038,7 @@ hr {
     position: relative;
     left: auto;
     bottom: auto;
-    align-self: flex-start;
+    align-self: center;
     margin-top: 14px;
 }
 /* Responsive: mobile info already in-flow */
@@ -3346,7 +3345,7 @@ hr {
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    background-color: rgba(0, 0, 0, 0.72) !important;
+    background-color: rgba(0, 0, 0, 0.88) !important;
     padding: 24px !important;
     transition: opacity 300ms ease-in-out !important;
 }
@@ -3361,10 +3360,6 @@ hr {
     margin-left: 0 !important;
     transform: none !important;
     opacity: 1 !important;
-}
-/* Hide release date & price in hover panel — show only name, desc, button */
-.article-item .article-item-info p.mb-30 {
-    display: none !important;
 }
 
 /* ===== LEFT MENU: transparent background ===== */
