@@ -33,9 +33,7 @@ Template Name: Home
         $tags = wp_get_object_terms($product_ids, 'product_tag', array('fields' => 'all'));
         if (!is_wp_error($tags)) {
             foreach ($tags as $tag) {
-                if (!empty($tag->description)) {
-                    $industry_tags[$tag->term_id] = $tag;
-                }
+                $industry_tags[$tag->term_id] = $tag;
             }
         }
     }

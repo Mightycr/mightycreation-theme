@@ -1,4 +1,3 @@
-﻿/* Updated by Claude Code */
 /*********************** GLOBAL ***********************/
 
 body {
@@ -2740,8 +2739,9 @@ h2 {
     color: #000;
 }
 
-/* Article item: accent title, refined CTA */
+/* Article item: accent title, left border, refined CTA */
 .article-item .article-item-info {
+    border-left: 2px solid var(--accent);
     background-color: rgba(7, 7, 7, 0.78);
 }
 
@@ -3039,7 +3039,7 @@ hr {
     position: relative;
     left: auto;
     bottom: auto;
-    align-self: center;
+    align-self: flex-start;
     margin-top: 14px;
 }
 /* Responsive: mobile info already in-flow */
@@ -3333,7 +3333,6 @@ hr {
 }
 
 /* ===== HOVER OVERLAY: fade-in centered info ===== */
-/* Reset the slide-in behaviour and use full-area overlay instead */
 .article-item .article-item-info {
     position: absolute !important;
     top: 0 !important;
@@ -3347,8 +3346,12 @@ hr {
     justify-content: center !important;
     text-align: center !important;
     background-color: rgba(0, 0, 0, 0.88) !important;
+    border-left: none !important;
     padding: 24px !important;
     transition: opacity 300ms ease-in-out !important;
+}
+.article-item .article-item-info * {
+    text-align: center !important;
 }
 .article-item:hover .article-item-info,
 .article-item:focus .article-item-info {
@@ -3361,6 +3364,10 @@ hr {
     margin-left: 0 !important;
     transform: none !important;
     opacity: 1 !important;
+}
+/* Show date and description — unhide mb-30 paragraphs */
+.article-item .article-item-info p.mb-30 {
+    display: block !important;
 }
 
 /* ===== LEFT MENU: transparent background ===== */
