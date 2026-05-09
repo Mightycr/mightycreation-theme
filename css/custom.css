@@ -3377,3 +3377,10 @@ hr {
     background-color: #0e0e0e !important;
     z-index: 100 !important;
 }
+
+.product-bar {
+    background-color: #0e0e0e !important;
+    z-index: 100 !important;
+    position: sticky !important;
+    top: 0 !important;
+}
