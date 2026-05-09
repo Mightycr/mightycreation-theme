@@ -136,26 +136,29 @@ Template Name: Home
 <!-- ./main-->
 
 <script>
-(function () {
-    // Industry filter
+document.addEventListener('DOMContentLoaded', function () {
     var btns = document.querySelectorAll('.industry-filter-btn');
     var items = document.querySelectorAll('.product-item-wrap');
-    btns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            btns.forEach(function (b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-            var filter = btn.getAttribute('data-filter');
-            items.forEach(function (item) {
+
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function () {
+            for (var j = 0; j < btns.length; j++) {
+                btns[j].classList.remove('active');
+            }
+            this.classList.add('active');
+            var filter = this.getAttribute('data-filter');
+            for (var k = 0; k < items.length; k++) {
+                var item = items[k];
                 if (filter === 'all') {
                     item.style.display = '';
                 } else {
                     var tags = (item.getAttribute('data-tags') || '').split(' ');
                     item.style.display = tags.indexOf(filter) !== -1 ? '' : 'none';
                 }
-            });
+            }
         });
-    });
-}());
+    }
+});
 </script>
 
 <?php get_footer(); ?>
