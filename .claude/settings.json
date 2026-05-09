@@ -1,0 +1,3 @@
+{
+  "instructions": "Always work directly on the main branch. Never create new branches (no git checkout -b). Never create pull requests. Commit and push directly to main."
+}
