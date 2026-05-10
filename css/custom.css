@@ -3385,4 +3385,19 @@ hr {
     }
 }
 
-/* ===== PRODUCT BAR: solid background for sticky behavior ===== */
+/* ===== PRODUCT BAR ===== */
+.product-bar {
+    background-color: #0e0e0e !important;
+    z-index: 100 !important;
+    position: sticky !important;
+    top: 0 !important;
+}
+
+.main {
+    overflow: hidden;
+}
+
+#product-grid {
+    clip-path: inset(100px 0 0 0);
+    margin-top: -100px;
+}
