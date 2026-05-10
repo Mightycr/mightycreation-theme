@@ -128,27 +128,16 @@ get_header(); ?>
 
             var filter = btn.getAttribute('data-filter');
             items.forEach(function (item) {
-                var tags = item.getAttribute('data-tags').split(' ');
-                var show = filter === 'all' || tags.indexOf(filter) !== -1;
-
-                if (show) {
+                if (filter === 'all') {
                     item.style.display = '';
-                    requestAnimationFrame(function () {
-                        requestAnimationFrame(function () {
-                            item.classList.remove('filter-hidden');
-                        });
-                    });
                 } else {
-                    item.classList.add('filter-hidden');
-                    item.addEventListener('transitionend', function handler() {
-                        if (item.classList.contains('filter-hidden')) {
-                            item.style.display = 'none';
-                        }
-                        item.removeEventListener('transitionend', handler);
-                    });
+                    var tags = item.getAttribute('data-tags').split(' ');
+                    item.style.display = tags.indexOf(filter) !== -1 ? '' : 'none';
                 }
             });
         });
     });
 }());
 </script>
+
+<?php get_footer(); ?>

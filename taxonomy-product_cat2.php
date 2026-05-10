@@ -128,16 +128,27 @@ get_header(); ?>
 
             var filter = btn.getAttribute('data-filter');
             items.forEach(function (item) {
-                if (filter === 'all') {
+                var tags = item.getAttribute('data-tags').split(' ');
+                var show = filter === 'all' || tags.indexOf(filter) !== -1;
+
+                if (show) {
                     item.style.display = '';
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            item.classList.remove('filter-hidden');
+                        });
+                    });
                 } else {
-                    var tags = item.getAttribute('data-tags').split(' ');
-                    item.style.display = tags.indexOf(filter) !== -1 ? '' : 'none';
+                    item.classList.add('filter-hidden');
+                    item.addEventListener('transitionend', function handler() {
+                        if (item.classList.contains('filter-hidden')) {
+                            item.style.display = 'none';
+                        }
+                        item.removeEventListener('transitionend', handler);
+                    });
                 }
             });
         });
     });
 }());
 </script>
-
-<?php get_footer(); ?>
