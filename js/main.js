@@ -93,4 +93,18 @@ jQuery(window).load(function () {
             }, i * 90);
         });
     });
+
+    jQuery(document).on('click', '.industry-filter-btn', function() {
+        var filter = jQuery(this).data('filter');
+        jQuery('.industry-filter-btn').removeClass('active');
+        jQuery(this).addClass('active');
+        if (filter === 'all') {
+            jQuery('.product-item-wrap').show();
+        } else {
+            jQuery('.product-item-wrap').each(function() {
+                var tags = (jQuery(this).data('tags') || '').split(' ');
+                jQuery(this).toggle(tags.indexOf(filter) !== -1);
+            });
+        }
+    });
 });
