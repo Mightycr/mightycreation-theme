@@ -1,4 +1,4 @@
-/*********************** GLOBAL ***********************/
+﻿/*********************** GLOBAL ***********************/
 
 body {
     font-family: 'Sofia Pro Light', sans-serif;
@@ -1116,6 +1116,11 @@ hr {
     bottom: 0;
     background-color: rgba(8, 8, 8, 0.78);
     padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
@@ -1144,9 +1149,10 @@ hr {
 }
 
 .article-item .article-item-info .article-item-info-btn {
-    position: absolute;
-    left: 30px;
-    bottom: 30px;
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin-top: 16px;
     z-index: 1;
 }
 
@@ -1178,8 +1184,7 @@ hr {
     }
 
     .article-item .article-item-info .article-item-info-btn {
-        left: 15px;
-        bottom: 10px;
+        margin-top: 10px;
     }
 }
 
@@ -2186,7 +2191,6 @@ textarea.form-control {
 
 
 
-
 .main .woocommerce .woocommerce-checkout .form-row .country_select {}
 
 .main .woocommerce .woocommerce-checkout .form-row .select2 .select2-selection {
@@ -3040,7 +3044,7 @@ hr {
     position: relative;
     left: auto;
     bottom: auto;
-    align-self: center;
+    align-self: flex-start;
     margin-top: 14px;
 }
 /* Responsive: mobile info already in-flow */
@@ -3143,7 +3147,7 @@ hr {
     margin-bottom: 8px;
     position: sticky;
     top: 0;
-    z-index: 5;
+    z-index: 100;
     background-color: #0e0e0e;
 }
 .product-bar .industry-filters {
@@ -3273,11 +3277,10 @@ hr {
     background-color: #fff !important;
 }
 
-/* 4-column grid: larger bold logo titles */
+/* 4-column grid: smaller logo titles */
 #product-grid.grid-4cols .article-item-info-title {
-    font-size: 18px !important;
-    line-height: 24px !important;
-    font-weight: 700 !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
     -webkit-line-clamp: 1;
 }
 
@@ -3296,6 +3299,34 @@ hr {
 }
 .article-single-images .article-item-image img {
     border-radius: 5px;
+}
+
+
+.single-product .main {
+    padding: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+.single-product .main > .row.mb-50 {
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    display: flex !important;
+}
+.single-product .col-xs-12.col-sm-6.col-md-6.col-lg-7 {
+    overflow-y: auto !important;
+    height: 100% !important;
+    padding: 100px 30px 40px 40px !important;
+    box-sizing: border-box !important;
+}
+.single-product .col-xs-12.col-sm-6.col-md-6.col-lg-5 {
+    overflow: hidden !important;
+    height: 100% !important;
+    padding: 100px 40px 40px 30px !important;
+    box-sizing: border-box !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.07) !important;
 }
 
 /* Filter buttons: transparent active state (border highlight only) */
@@ -3332,34 +3363,16 @@ hr {
     opacity: 1 !important;
     left: 0 !important;
 }
-/* On hover: zoom image 10%, no sideways pan */
+/* On hover: do NOT shift/zoom the image */
 .article-item:hover .article-item-image img,
 .article-item:focus .article-item-image img {
     margin-left: 0 !important;
-    transform: scale(1.1) !important;
+    transform: none !important;
     opacity: 1 !important;
-}
-/* Hide price in hover panel */
-.article-item .article-item-info .article-item-price {
-    display: none !important;
 }
 /* Show date and description — unhide mb-30 paragraphs */
 .article-item .article-item-info p.mb-30 {
     display: block !important;
-}
-/* Center the View Details button in the overlay — hide all other text so the button is the only child */
-.article-item .article-item-info .article-item-info-title,
-.article-item .article-item-info .article-item-info-title-desc,
-.article-item .article-item-info p.mb-30 {
-    display: none !important;
-}
-.article-item .article-item-info .article-item-info-btn {
-    position: relative !important;
-    left: auto !important;
-    bottom: auto !important;
-    margin: 0 auto !important;
-    align-self: center !important;
-    text-align: center !important;
 }
 
 /* ===== LEFT MENU: transparent background ===== */
@@ -3372,15 +3385,48 @@ hr {
     }
 }
 
-/* ===== PRODUCT BAR: solid background so logos scroll under it ===== */
+/* ===== PRODUCT BAR: transparent, not sticky (parent .bar-and-grid is sticky) ===== */
 .product-bar {
-    background-color: #0e0e0e !important;
-    z-index: 100 !important;
+    background: transparent !important;
+    position: relative !important;
+    top: auto !important;
+    z-index: 1 !important;
 }
 
-.product-bar {
-    background-color: #0e0e0e !important;
-    z-index: 100 !important;
-    position: sticky !important;
-    top: 0 !important;
+/* .main scrolls only the hero. .bar-and-grid sticks at top:0, filling the
+   rest of the viewport. overflow:hidden on it + overflow-y:auto on
+   .grid-scroll means logos clip exactly at the product-bar's bottom edge. */
+.main {
+    display: flex !important;
+    flex-direction: column !important;
+}
+.bar-and-grid {
+    position: sticky;
+    top: 0;
+    min-height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 100;
+}
+.grid-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ===== HOVER OVERLAY: center only View Details button ===== */
+.article-item .article-item-info .article-item-info-title,
+.article-item .article-item-info .article-item-info-title-desc,
+.article-item .article-item-info p.mb-30 {
+    display: none !important;
+}
+.article-item .article-item-info .article-item-info-btn {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    align-self: center !important;
+    margin: 0 auto !important;
 }
