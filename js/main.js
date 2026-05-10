@@ -64,6 +64,28 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    // Industry filter
+    $(document).on("click", ".industry-filter-btn", function () {
+        var $btn    = $(this);
+        var filter  = $btn.data("filter");
+        var $items  = $(".product-item-wrap");
+        var $scroll = $(".grid-scroll");
+
+        $(".industry-filter-btn").removeClass("active");
+        $btn.addClass("active");
+
+        if (filter === "all") {
+            $items.show();
+        } else {
+            $items.each(function () {
+                var tags = ($(this).data("tags") || "").split(" ");
+                $(this).toggle(tags.indexOf(filter) !== -1);
+            });
+        }
+
+        if ($scroll.length) { $scroll.scrollTop(0); }
+    });
+
     // Grid toggle: switch between 3 and 4 columns
     $(document).on("click", ".grid-toggle", function () {
         var cols = parseInt($(this).data("cols"), 10);
