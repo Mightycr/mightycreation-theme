@@ -1152,9 +1152,13 @@ hr {
     position: relative;
     left: auto;
     bottom: auto;
-    margin-top: 16px;
-    z-index: 1;
+    align-self: center;
+    margin-top: 0;
 }
+Save → xcopy → Ctrl+F5.
+
+
+You'
 
 .article-item:hover .article-item-info,
 .article-item:focus .article-item-info {
@@ -3044,7 +3048,6 @@ hr {
     position: relative;
     left: auto;
     bottom: auto;
-    align-self: flex-start;
     margin-top: 14px;
 }
 /* Responsive: mobile info already in-flow */
@@ -3387,17 +3390,14 @@ hr {
 
 /* ===== PRODUCT BAR ===== */
 .product-bar {
-    background-color: #0e0e0e !important;
+    background-color: transparent !important;
     z-index: 100 !important;
     position: sticky !important;
     top: 0 !important;
 }
 
-.main {
-    overflow: hidden;
-}
-
-#product-grid {
-    clip-path: inset(100px 0 0 0);
-    margin-top: -100px;
+/* ===== HOVER: zoom image 20% ===== */
+.article-item:hover .article-item-image img,
+.article-item:focus .article-item-image img {
+    transform: scale(1.1) !important;
 }
