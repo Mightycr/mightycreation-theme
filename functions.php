@@ -242,4 +242,35 @@ add_filter('nav_menu_css_class', function($classes, $item, $args) {
 }, 10, 3);
 
 
+// Testimonial meta box on product edit screen
+function mc_testimonial_meta_box() {
+    add_meta_box('mc_testimonial', 'Client Testimonial', 'mc_testimonial_meta_box_cb', 'product', 'normal', 'default');
+}
+add_action('add_meta_boxes', 'mc_testimonial_meta_box');
+
+function mc_testimonial_meta_box_cb($post) {
+    wp_nonce_field('mc_testimonial_nonce', 'mc_testimonial_nonce_field');
+    $quote       = get_post_meta($post->ID, '_testimonial_quote', true);
+    $author_name = get_post_meta($post->ID, '_testimonial_author_name', true);
+    $author_role = get_post_meta($post->ID, '_testimonial_author_role', true);
+    ?>
+    <p><label>Testimonial</label><br>
+    <textarea name="testimonial_quote" rows="4" style="width:100%"><?php echo esc_textarea($quote); ?></textarea></p>
+    <p><label>Client Name</label><br>
+    <input type="text" name="testimonial_author_name" value="<?php echo esc_attr($author_name); ?>" style="width:100%"></p>
+    <p><label>Client Role / Company</label><br>
+    <input type="text" name="testimonial_author_role" value="<?php echo esc_attr($author_role); ?>" style="width:100%"></p>
+    <?php
+}
+
+function mc_save_testimonial_meta($post_id) {
+    if (!isset($_POST['mc_testimonial_nonce_field']) || !wp_verify_nonce($_POST['mc_testimonial_nonce_field'], 'mc_testimonial_nonce')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+    update_post_meta($post_id, '_testimonial_quote',       sanitize_textarea_field($_POST['testimonial_quote'] ?? ''));
+    update_post_meta($post_id, '_testimonial_author_name', sanitize_text_field($_POST['testimonial_author_name'] ?? ''));
+    update_post_meta($post_id, '_testimonial_author_role', sanitize_text_field($_POST['testimonial_author_role'] ?? ''));
+}
+add_action('save_post', 'mc_save_testimonial_meta');
+
 ?>

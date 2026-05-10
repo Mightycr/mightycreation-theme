@@ -3116,6 +3116,34 @@ hr {
     margin-top: 4px;
 }
 
+.product-testimonials {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.product-testimonials-heading {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 32px;
+}
+
+.product-testimonials .testimonials-list {
+    max-width: 680px;
+}
+
+.testimonial-logo-thumb {
+    display: block;
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    opacity: 0.6;
+}
+
 
 /*********************** BATCH UPDATE ***********************/
 
