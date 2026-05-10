@@ -85,7 +85,8 @@ jQuery(document).ready(function ($) {
 
 jQuery(window).load(function () {
     jQuery('#loading-page').fadeOut(700, function () {
-        jQuery(this).remove();
+    jQuery('.product-bar').addClass('visible');
+    jQuery(this).remove();
         jQuery('.article-item').each(function (i) {
             var $item = jQuery(this);
             setTimeout(function () {
